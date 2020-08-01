@@ -1,4 +1,4 @@
-# sysusr-fe
+# sysurs-fe
 
 ## Project setup
 ```

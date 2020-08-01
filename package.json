@@ -1,5 +1,5 @@
 {
-  "name": "sysusr-fe",
+  "name": "sysurs-fe",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -40,6 +40,7 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "typescript": "~3.9.3",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-api-mocker": "^1.7.6"
   }
 }
