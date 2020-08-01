@@ -14,12 +14,11 @@ const users = [
 let currentUser = null;
 
 module.exports = {
-  'GET /api/signin': (req, res) => {
-    const basicAuth = req.getHeader('authorization');
-    const [userName, password] = decodeURIComponent(btoa(basicAuth)).split(':');
-    const isCorrect = !!users.find(user => user.userName === userName && user.password === password);
+  'POST /api/signin': (req, res) => {
+    const { user_name, password } = req.body;
+    const isCorrect = !!users.find(user => user.userName === user_name && user.password === password);
     if (isCorrect) {
-      currentUser = userName;
+      currentUser = user_name;
       res.sendStatus(200);
     } else {
       res.sendStatus(401);

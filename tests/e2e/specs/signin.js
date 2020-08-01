@@ -3,15 +3,16 @@
 describe('Test sign in function', () => {
   it('Test router guard', () => {
     cy.visit('/');
-    cy.url().should('include', '/login');
+    cy.wait(1000);
+    cy.url().should('include', '/signin');
   });
 
   it('Test sign in page correctly presented', () => {
     cy.contains('SYSURS');
     cy.contains('SIGN IN');
-    cy.get('#username > .signin-input').type('test1');
-    cy.get('#password > .signin-input').type('test.123456');
-    cy.get('#signin').click();
-    cy.contains('登录成功！');
+    cy.get('input[type=text]').type('test1');
+    cy.get('input[type=password]').type('test.123456');
+    cy.contains("SIGN IN").click();
+    cy.contains('登录成功，欢迎回来！');
   });
 });

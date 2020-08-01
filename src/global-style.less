@@ -1,0 +1,53 @@
+@primary-font-size: 18px;
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+  font-size: @primary-font-size;
+  padding: 8px 12px;
+  border: solid 1px #606060;
+  border-radius: 4px;
+  &:focus {
+    border: rgb(229, 151, 0), 1px, solid;
+  }
+  margin: 1px 0;
+}
+
+button {
+  outline: 0;
+  padding: 8px 12px;
+}
+
+button.primary {
+  border: 0;
+  background-color: #303030;
+  color: white;
+  font-size: @primary-font-size;
+}
+
+button.common {
+  border: solid 2px #303030;
+  background-color: white;
+  color: #101010;
+  font-size: @primary-font-size;
+}
+
+a {
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    color: black;
+  }
+  &:active {
+    color: black;
+  }
+}

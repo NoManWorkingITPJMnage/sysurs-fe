@@ -1,22 +1,30 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import BasicLayout from '@/components/BasicLayout.vue';
+import store from '@/store';
+import { Toast } from '@/plugins/ToastPlugin';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import('@/views/SignIn.vue'),
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/',
+    name: 'BasicLayout',
+    component: BasicLayout,
+    async beforeEnter(to, from, next) {
+      try {
+        await store.dispatch('user/fetchProfile');
+        Toast.$toast('登录成功，欢迎回来！', 2000);
+        next();
+      } catch (_error) {
+        next('/signin');
+      }
+    },
   },
 ];
 
