@@ -3,7 +3,7 @@
 describe('Test sign in function', () => {
   it('Test router guard', () => {
     cy.visit('/');
-    cy.wait(1000);
+    cy.wait(5000);
     cy.url().should('include', '/signin');
   });
 
