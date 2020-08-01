@@ -22,6 +22,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'class-methods-use-this': 'off',
     '@typescript-eslint/no-empty-function': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   overrides: [
     {

@@ -1,7 +1,7 @@
 import { Module } from 'vuex';
 import httpClient from '@/utils/httpClient';
 
-interface UserState {
+export interface UserState {
   userProf: UserProfile | null;
   isSignedIn: boolean;
 }
