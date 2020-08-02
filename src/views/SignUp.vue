@@ -5,12 +5,16 @@
     </div>
     <div class="form-layout column-layout">
       <div class="input-group column-layout">
+        <input type="text" placeholder="ID" v-model="studentID" />
+        <input type="text" placeholder="Real Name" v-model="realName" />
         <input type="text" placeholder="Username" v-model="userName" />
         <input type="password" placeholder="Password" v-model="password" />
       </div>
-      <div class="action-group column-layout">
-        <button class="primary" @click="signIn">SIGN IN</button>
-        <router-link to="/signup" class="sign-up">Sign Up</router-link>
+      <div class="action-group">
+        <router-link to="/signin" style="text-decoration: none; color: #6060606;">
+          <v-icon name="regular/arrow-alt-circle-left" scale="1.8"></v-icon>
+        </router-link>
+        <button class="primary" @click="signUp">NEXT</button>
       </div>
     </div>
   </div>
@@ -25,7 +29,7 @@
   justify-content: center;
 
   .title-layout {
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,12 +50,9 @@
       margin-bottom: 36px;
     }
     .action-group {
-      & > * {
-        margin-bottom: 24px;
-      }
-      .sign-up {
-        align-self: center;
-      }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
@@ -59,27 +60,44 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import Icon from 'vue-awesome/components/Icon.vue';
 import httpClient from '../utils/httpClient';
+import 'vue-awesome/icons/regular/arrow-alt-circle-left';
 
 @Component({
-  name: 'sign-in',
+  name: 'sign-up',
+  components: {
+    'v-icon': Icon,
+  },
 })
-export default class SignIn extends Vue {
+export default class SignUp extends Vue {
+  studentID = '';
+
+  realName = '';
+
   userName = '';
 
   password = '';
 
-  async signIn() {
+  async signUp() {
     try {
       /* eslint-disable @typescript-eslint/camelcase */
-      await httpClient.post('/signin', {
+      await httpClient.post('/signup', {
+        student_id: this.studentID,
+        real_name: this.realName,
         user_name: this.userName,
         password: this.password,
       });
       /* eslint-enable @typescript-eslint/camelcase */
-      this.$router.push('/');
-    } catch (_error) {
-      this.$toast('登录失败，用户名或密码错误', 2000);
+      this.$toast('注册成功，请重新登录', 2000);
+      this.$router.push('/signin');
+    } catch (error) {
+      if (error.response) {
+        const { message } = error.response.data;
+        this.$toast(`注册失败，${message}`, 2000);
+      } else {
+        this.$toast('网络错误，请稍后再试', 2000);
+      }
     }
   }
 }

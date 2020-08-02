@@ -13,6 +13,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/SignIn.vue'),
   },
   {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('@/views/SignUp.vue'),
+  },
+  {
     path: '/',
     name: 'BasicLayout',
     component: BasicLayout,

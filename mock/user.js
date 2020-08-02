@@ -41,7 +41,11 @@ module.exports = {
       res.status(409).json({ message: isUserNameDup ? '用户名已存在' : '该学号已被注册' });
     } else {
       users.push(newUser);
-      res.sendDtatus(201);
+      res.sendStatus(201);
     }
+  },
+  'POST /api/signout': (_req, res) => {
+    currentUser = null;
+    res.sendStatus(200);
   }
 };
