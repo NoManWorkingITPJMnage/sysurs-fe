@@ -30,7 +30,18 @@ module.exports = {
       delete(userProf.password);
       res.status(200).json(userProf);
     } else {
-      res.status(401);
+      res.sendStatus(401);
+    }
+  },
+  'POST /api/signup': (req, res) => {
+    const newUser = req.body;
+    const isUserNameDup = users.some(user => user.userName === newUser.userName);
+    const isStudentIDDup = users.some(user => user.studentID === newUser.studentID);
+    if (isUserNameDup || isStudentIDDup) {
+      res.status(409).json({ message: isUserNameDup ? '用户名已存在' : '该学号已被注册' });
+    } else {
+      users.push(newUser);
+      res.sendDtatus(201);
     }
   }
 };
