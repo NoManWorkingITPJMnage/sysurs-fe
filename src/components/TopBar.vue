@@ -14,6 +14,8 @@
 
 <style lang="less" scoped>
 .main-layout {
+  position: fixed;
+  top: 0;
   background-color: #606060;
   color: white;
   font-size: 18px;
