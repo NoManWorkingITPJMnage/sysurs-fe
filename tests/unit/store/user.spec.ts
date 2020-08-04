@@ -1,5 +1,5 @@
 import { userModule, UserState } from '@/store/modules/user';
-import assert from 'assert';
+import { assert } from 'chai';
 
 describe('Test User Module', () => {
   it('Set user profile', () => {

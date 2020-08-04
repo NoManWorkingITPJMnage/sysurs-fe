@@ -76,6 +76,6 @@ import 'vue-awesome/icons/cloud-download-alt';
   },
 })
 export default class ResourceList extends Vue {
-  @Prop() dataSource: Array<Resource> = [];
+  @Prop() dataSource!: Array<Resource>;
 }
 </script>
