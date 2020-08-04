@@ -27,7 +27,7 @@ jobs:
     - name: Run e2e tests
       uses: cypress-io/github-action@v1
       with:
-        start: npm run serve
+        start: npm run serve:silent
         wait-on: http://localhost:8080/
         config_file: cypress.json
         spec: "tests/e2e/**/*"
