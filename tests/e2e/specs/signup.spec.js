@@ -1,5 +1,4 @@
 describe('Test sign up function', () => {
-
   it('Test router could be correctly navigated', () => {
     cy.request('POST', '/api/signout');
     cy.wait(500);
@@ -8,7 +7,7 @@ describe('Test sign up function', () => {
     cy.url().should('include', '/signin');
     cy.contains('Sign Up').click();
     cy.wait(1000);
-    cy.url().should('include', '/signup')
+    cy.url().should('include', '/signup');
   });
 
   it('Test sign in page correctly presented', () => {
@@ -18,7 +17,7 @@ describe('Test sign up function', () => {
     cy.url().should('include', '/signin');
     cy.contains('Sign Up').click();
     cy.wait(1000);
-    cy.url().should('include', '/signup')
+    cy.url().should('include', '/signup');
     cy.get('input[placeholder=ID][type=text]').type('17343999');
     cy.get('input[placeholder="Real Name"][type=text]').type('真实名字');
     cy.get('input[placeholder=Username][type=text]').type('tester2');

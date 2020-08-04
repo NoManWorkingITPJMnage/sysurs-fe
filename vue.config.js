@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   transpileDependencies: [
-    /\bvue-awesome\b/
+    /\bvue-awesome\b/,
   ],
   configureWebpack: {
     devServer: {
