@@ -9,11 +9,14 @@
 // /* eslint-disable import/no-extraneous-dependencies, global-require */
 // const webpack = require('@cypress/webpack-preprocessor')
 
+const codeCoverage = require('@cypress/code-coverage/task');
+
 module.exports = (on, config) => {
   // on('file:preprocessor', webpack({
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
+  codeCoverage(on, config);
 
   return {
     ...config,

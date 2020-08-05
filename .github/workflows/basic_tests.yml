@@ -33,3 +33,5 @@ jobs:
         spec: "tests/e2e/**/*"
       env:
         CYPRESS_baseUrl: http://localhost:8080/
+    - name: Generate code coverage report
+      run: npx nyc report --reporter=text-summary
